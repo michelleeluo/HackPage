@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Hack Page</title>
     <meta charset="utf-8">
@@ -10,9 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-    
+
 
 </head>
+
 <body>
     <nav class="navbar navbar-inverse">
         <a href="#" class="navbar-left"><img class="logo" src="logo.png" width="200" height="50"></a>
@@ -31,37 +33,41 @@
                     <li><a href="hackathonPage.html">Hackathons</a></li>
                     <li><a href="account.html">Account</a></li>
                     <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-            <ul id="login-dp" class="dropdown-menu">
-                <li>
-                     <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                        <form autocomplete="off"> 
-                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                        </form> 
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <form autocomplete="off">
+                                                <input type="email" class="form-control" id="exampleInputEmail2"
+                                                    placeholder="Email address" required>
+                                            </form>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                            <form autocomplete="off">
+                                                <input type="password" class="form-control" id="exampleInputPassword2"
+                                                    placeholder="Password" required>
+                                            </form>
+                                            <div style="color:black" class="help-block text-center"><a href="" style="color:black">Forget
+                                                    your password?</a></div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block" style="width:300px">Sign
+                                                in</button>
+                                        </div>
+
                                     </div>
-                                <div class="form-group">
-                                        <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                        <form autocomplete="off"> 
-                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                        </form>
-                                        <div style="color:black" class="help-block text-center"><a href="" style="color:black">Forget your password?</a></div>
-                                        
+                                    <div style="color:black" class="bottom text-center">
+                                        New here? <a href="registration.html" style="color:black"><b>Sign Up!</b></a>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block" style="width:300px">Sign in</button>
-                                </div>
-                                
-                            </div>
-                            <div style="color:black" class="bottom text-center">
-                                New here? <a href="registration.html" style="color:black"><b>Sign Up!</b></a>
-                            </div>
-                     </div>
-                </li>
-            </ul>
-        </li>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -81,7 +87,8 @@
                     <br>
                     <button type="button" class="btn btn-default">Get Hacking</button>
                 </div>
-            </div> <!---end active-->
+            </div>
+            <!---end active-->
             <div class="item">
                 <img src="bg1.jpg">
                 <div class="carousel-caption">
@@ -90,14 +97,14 @@
                     <button type="button" class="btn btn-default">Get Hacking</button>
                 </div>
             </div>
-            <div class="item">
+            <!-- <div class="item">
                 <img src="bg2.jpeg">
                 <div class="carousel-caption">
                     <h1>Register a Hackathon</h1>
                     <br>
                     <a href="hackRegistration.html" button type="button" class="btn btn-default">Get Hacking</button>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!---start slider controls-->
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -108,15 +115,14 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div> <!---end slider-->
+    </div>
+    <!---end slider-->
 
     <div class="container text-center">
         <h2>Featured Hackathons</h2>
-        
+
         <div class="row">
             <div class="col-sm-4">
-                <img src="bg0.jpg" id="icon">      
-                <h4>somthg</h4>
                 <img src="ellehackslogo.jpg" id="icon">
                 <h4>Elle Hacks 2019</h4>
             </div>
@@ -179,7 +185,7 @@
             <div class="col-sm-4">
                 <img src="" class="icon">
             </div>
-                
+
         </div>
     </footer>
 
@@ -195,9 +201,10 @@
         };
         firebase.initializeApp(config);
         const db = firebase.firestore();
-    </script> 
+    </script>
     <script src="app.js"></script>
 
 
 </body>
+
 </html>
