@@ -3,7 +3,7 @@ var hacks = [];
 var usrs = [];
 
 function renderUsers(doc){
-    var curr = [];
+    var curr = [7];
     let li = document.createElement('li');
      li.innerHTML = `
         <p>${ doc.data().name }</p>
@@ -24,10 +24,12 @@ function renderUsers(doc){
     curr[6] = doc.data().links;
 
     usrs.push(curr);
+    console.log(usrs);
+
 }
 
 function renderOrg(doc){
-    var curr = [];
+    var curr = [6];
     let li = document.createElement('li');
      li.innerHTML = `
         <p>${ doc.data().name }</p>
@@ -46,38 +48,9 @@ function renderOrg(doc){
     curr[5] = doc.data().sponsors;
 
     hacks.push(curr);
+    console.log(hacks);
 
 
-    // let name = document.createElement('span');
-    // let school = document.createElement('span');
-    // let location = document.createElement('span');
-    // let startDate = document.createElement('span');
-    // let endDate = document.createElement('span');
-    // let sponsors = document.createElement('span');
-
-    // li.setAttribute('org-id', doc.id);
-    // name.textContent = doc.data().name;
-    // school.textContent = doc.data().school;
-    // location.textContent = doc.data().location;
-    // startDate.textContent = doc.data().startDate;
-    // endDate.textContent = doc.data().endDate;
-    // sponsors.textContent = doc.data().sponsors;
-
-    //document.getElementById("dbstuff").innerHTML = name;
-
-
-    // li.appendChild(name);
-    // li.appendChild(school);
-    // li.appendChild(location);
-    // li.appendChild(startDate);
-    // li.appendChild(endDate);
-    // li.appendChild(sponsors);
-
-    //console.log(li);
-    //document.getElementById("dbstuff").innerText = li;
-    
-    //console.log(li.ch);
-    //organizations.appendChild(li);
 }
 
 // getting data
@@ -89,6 +62,6 @@ function renderOrg(doc){
 
  db.collection('users').get().then(snapshot => {
      snapshot.docs.forEach(doc => {
-         renderOrg(doc);
+         renderUsers(doc);
      });
  });
