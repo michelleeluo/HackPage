@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    
 
 </head>
 <body>
@@ -79,9 +80,11 @@
 
     <div class="container text-center">
         <h2>Featured Hackathons</h2>
+        
         <div class="row">
             <div class="col-sm-4">
                 <img src="bg0.jpg" id="icon">
+                
                 <h4>somthg</h4>
             </div>
             <div class="col-sm-4">
@@ -94,6 +97,9 @@
             </div>
         </div>
     </div>
+
+
+
 
     <div class="container">
         <div class="row">
@@ -113,6 +119,7 @@
     <div class="row">
         <div class="col-md-6">
             <h4>another heading</h4>
+            <p id="dbstuff"></p>
             <p>paragraph paragraph paragraph paragraph paragraph</p>
             <img src="" class="img-responsive">
         </div>
@@ -122,6 +129,7 @@
             <img src="" class="img-responsive">
         </div>
     </div>
+
 
     </div>
 
@@ -144,6 +152,21 @@
                 
         </div>
     </footer>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDUs73C_83RAU1brgiGHMpZ09v0lS_TzZM",
+            authDomain: "ellehacks.firebaseapp.com",
+            databaseURL: "https://ellehacks.firebaseio.com",
+            projectId: "ellehacks",
+            storageBucket: "ellehacks.appspot.com",
+            messagingSenderId: "506229378891"
+        };
+        firebase.initializeApp(config);
+        const db = firebase.firestore();
+    </script> 
+    <script src="app.js"></script>
 
 
 </body>
