@@ -1,30 +1,36 @@
 steps:
-- name: string
-  args: [string, string, ...]
-  env: [string, string, ...]
-  dir: string
-  id: string
-  waitFor: string
-  entrypoint: string
-  secretEnv: string
-  volumes: object(Volume)
-  timeout: string (Duration format)
-- name: string
-  ...
-- name: string
-  ...
-timeout: string (Duration format)
-logsBucket: string
-options:
- sourceProvenanceHash: enum(HashType)
- machineType: enum(MachineType)
- diskSizeGb: string (int64 format)
- substitutionOption: enum(SubstitutionOption)
- logStreamingOption: enum(LogStreamingOption)
- logging: enum(LoggingMode)
-substitutions: map (key: string, value: string)
-tags: [string, string, ...]
-secrets: object(Secret)
-images:
-- [string, string, ...]
-artifacts: object (Artifacts)
+# Pull the latest gcloud image.
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['pull', 'gcr.io/cloud-builders/gcloud']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/ellehacks/git', '.']
+
+# Clone a public repo and write its revision to a VERSION file.
+- name: 'gcr.io/ellehacks/git'
+  args: ['clone', 'https://github.com/GoogleCloudPlatform/cloud-builders.git']
+  dir: 'examples/version-file'
+# The Dockerfile here uses this git builder as its base image.
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=version_file', '.']
+  dir: 'examples/version-file'
+- name: 'version_file'
+  args: ['VERSION']
+  dir: 'examples/version-file/cloud-builders'
+# Prove that the file exists.
+- name: 'alpine'
+  args: ['ash', '-c', 'echo "Version: $(cat VERSION)"']
+  dir: 'examples/version-file/cloud-builders'
+
+# Set a global configuration and check that it's persisted.
+# This configuration won't be included in the resulting builder image.
+- name: 'gcr.io/ellehacks/git'
+  args: ['config', '--global', 'test.foo', 'bar']
+- name: 'gcr.io/ellehacks/git'
+  entrypoint: 'bash'
+  args: ['-c', 'git config --global --get test.foo | grep ^bar$']
+
+# Clone a private repo belonging to the project.
+- name: 'gcr.io/ellehacks/git'
+  args: ['clone', 'https://source.developers.google.com/p/ellehacks/r/default']
+
+images: ['gcr.io/ellehacks/git']
