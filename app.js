@@ -11,7 +11,7 @@ var usrs = [];
     messagingSenderId: "506229378891"
 };
 firebase.initializeApp(config);
-const db = firebase.firestore();
+db = firebase.firestore();
 
 function renderUsers(doc){
     var curr = [7];
@@ -78,36 +78,56 @@ function renderOrg(doc){
      });
  });
 
-// function store() {
-//     //var inp = (document.getElementById("sponsors").value).split(',');
-//     // Add a new document with a generated id.
-//     db.collection("Organization").doc().set({
-//         name: hackForm.name.value,
-//         school: hackForm.school.value,
-//         location: hackForm.location.value,
-//         startDate: hackForm.startDate,
-//         endDate: hackForm.endDate,
-//         sponsors: hackForm.sponsors.value,
-//         email: hackForm.email.value,
-//         capacity: hackForm.capacity.value
-//     })
-//     .then(function(docRef) {
-//         console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// }
+function regUsr() {
+    var bday = document.getElementById('birthDate').value;
+
+    var age = '20';
+    var ema = document.getElementById('email').value;
+    var gen = document.getElementById('school').value;
+    var hhi = '';
+    var lin = document.getElementById('webSite').value;
+    var nam = document.getElementById('firstName').value;
+    var sch = document.getElementById('school').value;
+    var ssz = document.getElementById('shirtSize').value;
 
 
-// document.getElementById("btnSubmit").addEventListener("click", function(){
-//     console.log("hi");
-// });
+    console.log(db.collection("users"));
+    console.log(db.collection("users").doc());
+
+    console.log(db.collection("users").firestore);
+    console.log(db.collection("users").doc()._key);
+
+    console.log(db.collection("users").firestore._dataConverter);
+    console.log(db.collection("users").doc()._key.path);
+
+
+
+    db.collection("users").add({
+        // age: age,
+        // email: ema,
+        // gender: gen,
+        // hackHist: hhi,
+        // links: lin,
+        // name: nam,
+        // school: sch,
+        // shirtSize: ssz
+        age: "20",
+        email: "michellelelel@gmail.com",
+        gender: "female",
+        hackHist: "no",
+        links: "www.com, https.ca",
+        name: "Michelle",
+        school: "Uoft",
+        shirtSize: "LLLL"
+    });
+
+  
+}
 
 
     function regHack() {
-        var spons = document.getElementById('sponsors').value.split(',');
-        console.log(spons);
+        var spons = document.getElementById('sponsors').value;//.split(',');
+        //console.log(spons);
         var nam = document.getElementById('name').value;
         var sch = document.getElementById('school').value;
         var ema = document.getElementById('email').value;
@@ -115,7 +135,7 @@ function renderOrg(doc){
         var std = document.getElementById('startDate').value;
         var end = document.getElementById('endDate').value;
         var cap = document.getElementById('capacity').value;
-        db.collection("Organization").doc().set({
+        db.collection("Organization").add({
             name: nam,
             school: sch,
             location: loc,
@@ -125,7 +145,29 @@ function renderOrg(doc){
             email: ema,
             capacity: cap
         });
+        // var docData = {
+        //     capacity: cap,
+        //     email: ema,
+        //     endDate: end, //firebase.firestore.Timestamp.fromDate(new Date("December 10, 1815")),
+        //     location: loc,
+        //     name: nam,
+        //     school: sch,
+        //     sponsors: spons,
+        //     startDate: std, //firebase.firestore.Timestamp.fromDate(new Date("December 10, 1815")),
+        // };
+        // console.log(docData.name);
+        // console.log(docData.school);
+        // console.log(docData.location);
+        // console.log(docData.startDate);
+        // console.log(docData.endDate);
+        // console.log(docData.sponsors);
+        // console.log(docData.email);
+        // console.log(docData.capacity);
 
+
+        // db.collection("Organization").add(docData).then(function() {
+        //     console.log("Document successfully written!");
+        // });
 
     }
  //saving
