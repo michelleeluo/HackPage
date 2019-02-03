@@ -77,7 +77,7 @@ function login() {
      firebase.auth().signOut()
       
      .then(function() {
-        console.log('Signout Succesfull')
+        console.log('Signout Succesful')
      }, function(error) {
         console.log('Signout Failed')  
      });
