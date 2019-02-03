@@ -1,7 +1,3 @@
-var hacks = [];
-var usrs = [];
-
-
 
  // Initialize Firebase
  var config = {
@@ -10,11 +6,96 @@ var usrs = [];
     databaseURL: "https://ellehacks.firebaseio.com",
     projectId: "ellehacks",
     storageBucket: "ellehacks.appspot.com",
-    messagingSenderId: "506229378891"
+    messagingSenderId: "506229378891",
+
+    clientId: "506229378891-s5aq2ikrpa1718jc3tuvociv513j63o6.apps.googleusercontent.com",
+    scopes: [
+        "email"]
 };
 firebase.initializeApp(config);
 db = firebase.database();
 
+// firebase.auth().onAuthStateChanged(function(user) {
+//     window.user = user; // user is undefined if no user signed in
+//    });
+
+function login() {
+    
+}
+
+   // This function will trigger when there is a login event
+// firebase.auth().onAuthStateChanged(function(user) {
+//     // Make sure there is a valid user object
+//     if(user){
+//       var script = document.createElement('script');
+//       script.type = 'text/javascript';
+//       script.src = 'https://apis.google.com/js/api.js';
+//       // Once the Google API Client is loaded, you can run your code
+//       script.onload = function(e){
+//        // Initialize the Google API Client with the config object
+//        gapi.client.init({
+//          apiKey: config.apiKey,
+//          clientId: config.clientID,
+//          scope: config.scopes.join(' '),
+//        })
+//        // Loading is finished, so start the app
+//        .then(function() {
+//         // Make sure the Google API Client is properly signed in
+//         if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
+//           startApp(user);
+//         } else {
+//           firebase.auth().signOut(); // Something went wrong, sign out
+//         }
+//        })
+//       }
+//       // Add to the document
+//       document.getElementsByTagName('head')[0].appendChild(script);  
+//     }
+//   })
+
+  var provider = new firebase.auth.GoogleAuthProvider();
+
+  function googleSignin() {
+     firebase.auth()
+     
+     .signInWithPopup(provider).then(function(result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+          
+        console.log(token)
+        console.log(user)
+     }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+          
+        console.log(error.code)
+        console.log(error.message)
+     });
+  }
+  
+  function googleSignout() {
+     firebase.auth().signOut()
+      
+     .then(function() {
+        console.log('Signout Succesfull')
+     }, function(error) {
+        console.log('Signout Failed')  
+     });
+  }
+
+
+
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({
+    'login_hint': 'user@example.com'
+  });
+
+var usersRef = firebase.database().ref("users/");
+var hacksRef = firebase.database().ref("hacks/");
+
+usersRef.orderByChild("name").on("child_added", function(data) {
+    console.log(data.val().name);
+ });
 
 // const preObj = document.getElementById('obj');
 // const dbRefObj = firebase.database().ref().child('obj');
@@ -77,7 +158,7 @@ db = firebase.database();
    alert('The user is created successfully!');
    reload_page();
   }
-  
+
   function saveHack(){
         var nam = document.getElementById('name').value;
         var sch = document.getElementById('school').value;
@@ -108,211 +189,3 @@ db = firebase.database();
     alert('The hack is created successfully!');
     reload_page();
    }
-  
-//   function update_user(){
-//    var user_name = document.getElementById('user_name').value;
-//    var user_id = document.getElementById('user_id').value;
-
-//    var data = {
-//         age: "20",
-//         email: "michellelelel@gmail.com",
-//         gender: "female",
-//         lastN: "luo",
-//         links: "www.com, https.ca",
-//         name: "Michelle",
-//         school: "Uoft",
-//         shirtSize: "LLLL"
-//    }
-   
-//    var updates = {};
-//    updates['/users/' + user_id] = data;
-//    firebase.database().ref().update(updates);
-   
-//    alert('The user is updated successfully!');
-   
-//    reload_page();
-//   }
- 
-  function reload_page(){
-   window.location.reload();
-  }
-  
-
-// function writeUserData(name, email, imageUrl) {
-//     firebase.database().ref('users/' + email).set({
-//       name: name,
-//       email: email,
-//       profile_picture : imageUrl
-//     });
-//   }
-
-// var userId = firebase.auth().currentUser.uid;
-// return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-//   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-//   // ...
-// });
-
-
-// function renderUsers(doc){
-//     var curr = [7];
-//     let li = document.createElement('li');
-//      li.innerHTML = `
-//         <p>${ doc.data().name }</p>
-//         <p>${ doc.data().school }</p>
-//         <p>${ doc.data().age }</p>
-//         <p>${ doc.data().gender }</p>
-//         <p>${ doc.data().shirtSize }</p>
-//         <p>${ doc.data().hackHist }</p>
-//         <p>${ doc.data().links }</p>` 
-//     //sdocument.getElementById("dbstuff").innerText = li.innerText;
-
-//     curr[0] = doc.data().name;
-//     curr[1] = doc.data().school;
-//     curr[2] = doc.data().age;
-//     curr[3] = doc.data().gender;
-//     curr[4] = doc.data().shirtSize;
-//     curr[5] = doc.data().hackHist;
-//     curr[6] = doc.data().links;
-
-//     usrs.push(curr);
-//     //console.log(usrs);
-// }
-
-// function renderOrg(doc){
-//     var curr = [8];
-//     let li = document.createElement('li');
-//      li.innerHTML = `
-//         <p>${ doc.data().name }</p>
-//         <p>${ doc.data().school }</p>
-//         <p>${ doc.data().location }</p>
-//         <p>${ doc.data().startDate }</p>
-//         <p>${ doc.data().endDate }</p>
-//         <p>${ doc.data().sponsors }</p>
-//         <p>${ doc.data().email }</p>
-//         <p>${ doc.data().capacity }</p>` 
-//     //document.getElementById("dbstuff").innerText = li.innerText;
-
-//     curr[0] = doc.data().name;
-//     curr[1] = doc.data().school;
-//     curr[2] = doc.data().location;
-//     curr[3] = doc.data().startDate;
-//     curr[4] = doc.data().endDate;
-//     curr[5] = doc.data().sponsors;
-//     curr[6] = doc.data().email;
-//     curr[7] = doc.data().capacity;
-
-//     hacks.push(curr);
-//     //console.log(hacks);
-// }
-
-// // getting data
-//  db.collection('Organization').get().then(snapshot => {
-//      snapshot.docs.forEach(doc => {
-//          renderOrg(doc);
-//      });
-//  });
-
-//  db.collection('users').get().then(snapshot => {
-//      snapshot.docs.forEach(doc => {
-//          renderUsers(doc);
-//      });
-//  });
-
-// function regUsr() {
-//     var bday = document.getElementById('birthDate').value;
-
-//     var age = '20';
-//     var ema = document.getElementById('email').value;
-//     var gen = document.getElementById('school').value;
-//     var hhi = '';
-//     var lin = document.getElementById('webSite').value;
-//     var nam = document.getElementById('firstName').value;
-//     var sch = document.getElementById('school').value;
-//     var ssz = document.getElementById('shirtSize').value;
-
-
-//     console.log(db.collection("users"));
-//     console.log(db.collection("users").doc());
-
-//     console.log(db.collection("users").firestore);
-//     console.log(db.collection("users").doc()._key);
-
-//     console.log(db.collection("users").firestore._dataConverter);
-//     console.log(db.collection("users").doc()._key.path);
-
-
-
-//     db.collection("users").add({
-//         // age: age,
-//         // email: ema,
-//         // gender: gen,
-//         // hackHist: hhi,
-//         // links: lin,
-//         // name: nam,
-//         // school: sch,
-//         // shirtSize: ssz
-//         age: "20",
-//         email: "michellelelel@gmail.com",
-//         gender: "female",
-//         hackHist: "no",
-//         links: "www.com, https.ca",
-//         name: "Michelle",
-//         school: "Uoft",
-//         shirtSize: "LLLL"
-//     });
-
-  
-// }
-
-
-//     function regHack() {
-//         var spons = document.getElementById('sponsors').value;//.split(',');
-//         //console.log(spons);
-//         var nam = document.getElementById('name').value;
-//         var sch = document.getElementById('school').value;
-//         var ema = document.getElementById('email').value;
-//         var loc = document.getElementById('location').value;
-//         var std = document.getElementById('startDate').value;
-//         var end = document.getElementById('endDate').value;
-//         var cap = document.getElementById('capacity').value;
-//         db.collection("Organization").add({
-//             name: nam,
-//             school: sch,
-//             location: loc,
-//             startDate: std,
-//             endDate: end,
-//             sponsors: spons,
-//             email: ema,
-//             capacity: cap
-//         });
-
-   // }
-
-
-
- //saving
-//  hackForm.addEventListener('submit', (e) => {
-//     console.log("asdfsafsf");
-//     e.preventDefault();
-//     //var spons = hackForm.sponsors.value.split(',');
-//     console.log(spons);
-//     // Add a new document with a generated id.
-//     db.collection("Organization").add({
-//         name: hackForm.name.value,
-//         school: hackForm.school.value,
-//         location: hackForm.location.value,
-//         startDate: hackForm.startDate,
-//         endDate: hackForm.endDate,
-//         sponsors: hackForm.sponsors.value,
-//         email: hackForm.email.value,
-//         capacity: hackForm.capacity.value
-//     })
-//     .then(function(docRef) {
-//         console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-//     hackForm.reset();
-
-//  });
