@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
 </head>
 
 <body>
@@ -25,9 +26,9 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavBar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li> 
           <li><a href="hackathonPage.html">Hackathons</a></li>
-          <li class="active"><a href="account.html">Account</a></li>
+          <li class="active"><a href="#">Account</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
             <ul id="login-dp" class="dropdown-menu">
@@ -36,222 +37,73 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                      <form autocomplete="off">
+                        <input type="email" class="form-control" id="exampleInputEmail2"
+                        placeholder="Email address" required>
+                      </form>
                     </div>
                     <div class="form-group">
                       <label class="sr-only" for="exampleInputPassword2">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                      <div style="color:black" class="help-block text-right"><a href="" style="color:black">Forget your password?</a></div>
+                      <form autocomplete="off">
+                        <input type="password" class="form-control" id="exampleInputPassword2"
+                        placeholder="Password" required>
+                      </form>
+                      <div style="color:black" class="help-block text-center"><a href="" style="color:black">Forget your password?</a></div>
+
                     </div>
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                      <button type="submit" class="btn btn-primary btn-block" style="width:300px">Sign in</button>
                     </div>
-                  </form>
+
+                  </div>
+                  <div style="color:black" class="bottom text-center">
+                    New here? <a href="registration.html" style="color:black"><b>Sign Up!</b></a>
+                  </div>
                 </div>
-                <div style="color:black" class="bottom text-center">
-                  New here? <a href="registration.html" style="color:black"><b>Join Us</b></a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-
-<hr>
-<div class="container bootstrap snippet">
-  <div class="row">
-    <div class="col-sm-10"><h1>First-Name Last-Name</h1></div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3"><!--left col-->
-
-
-      <div class="text-center">
-        <i id="icon" class="fa fa-camera" style="text-shadow: rgb(0, 47, 88) 0px 0px 0px, rgb(0, 49, 92) 1px 1px 0px, rgb(0, 51, 96) 2px 2px 0px, rgb(0, 54, 100) 3px 3px 0px, rgb(0, 56, 104) 4px 4px 0px, rgb(0, 58, 108) 5px 5px 0px, rgb(0, 60, 113) 6px 6px 0px, rgb(0, 63, 117) 7px 7px 0px, rgb(0, 65, 121) 8px 8px 0px; font-size: 120px; color: rgb(255, 255, 255); height: 186px; width: 186px; line-height: 186px; border-radius: 11%; text-align: center; background-color: rgb(0, 67, 125);"></i> 
-        <h6>Upload a different photo</h6>
-        <input type="file" class="text-center center-block file-upload">
-      </div></hr><br>
-
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Website</div>
-        <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
+    </div>
+  </nav>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">Social Media</div>
-        <div class="panel-body">
-          <i class="fa fa-linkedin fa-2x" style="color:black;"></i> <i class="fa fa-github fa-2x" style="color:black;"></i> <i class="fa fa-twitter fa-2x" style="color:black;"></i> <i class="fa fa-facebook fa-2x" style="color:black;"></i>
+  <hr>
+  <div class="container bootstrap snippet">
+    <div class="row">
+      <div class="col-sm-10"><h2>User Name</h2></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+
+        <div class="text-center">
+          <i id="icon" class="fa fa-camera" style="text-shadow: rgb(0, 47, 88) 0px 0px 0px, rgb(0, 49, 92) 1px 1px 0px, rgb(0, 51, 96) 2px 2px 0px, rgb(0, 54, 100) 3px 3px 0px, rgb(0, 56, 104) 4px 4px 0px, rgb(0, 58, 108) 5px 5px 0px, rgb(0, 60, 113) 6px 6px 0px, rgb(0, 63, 117) 7px 7px 0px, rgb(0, 65, 121) 8px 8px 0px; font-size: 120px; color: rgb(255, 255, 255); height: 186px; width: 186px; line-height: 186px; border-radius: 11%; text-align: center; background-color: rgb(0, 67, 125);"></i> 
+          <h6>Upload a different photo</h6>
+          <input type="file" class="text-center center-block file-upload">
+        </div></hr><br>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Social Media</div>
+          <div class="panel-body">
+            <i class="fa fa-linkedin fa-2x" style="color:black;"></i> <i class="fa fa-github fa-2x" style="color:black;"></i> <i class="fa fa-twitter fa-2x" style="color:black;"></i> <i class="fa fa-facebook fa-2x" style="color:black;"></i>
+          </div>
         </div>
       </div>
 
-    </div><!--/col-3-->
-    <div class="col-sm-9">
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
-        <li><a data-toggle="tab" href="#messages">Registered Hackathons</a></li>
-      </ul>
-
-
-      <div class="tab-content">
-        <div class="tab-pane active" id="home">
-          <hr>
-          <form class="form" action="##" method="post" id="registrationForm">
+      <div class="col-sm-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
             <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="first_name"><h4>First name</h4></label>
-                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-              </div>
+              <label for="last_name"><h4>First Name</h4></label>
+                <p>First Name</p>
             </div>
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="last_name"><h4>Last name</h4></label>
-                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-              </div>
-            </div>
-
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="phone"><h4>Phone</h4></label>
-                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-xs-6">
-               <label for="mobile"><h4>Mobile</h4></label>
-               <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-             </div>
-           </div>
-           <div class="form-group">
-
-            <div class="col-xs-6">
-              <label for="email"><h4>Email</h4></label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-            </div>
-          </div>
-          <div class="form-group">
-
-            <div class="col-xs-6">
-              <label for="email"><h4>Location</h4></label>
-              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-            </div>
-          </div>
-          <div class="form-group">
-
-            <div class="col-xs-6">
-              <label for="password"><h4>Password</h4></label>
-              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-            </div>
-          </div>
-          <div class="form-group">
-
-            <div class="col-xs-6">
-              <label for="password2"><h4>Verify</h4></label>
-              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-            </div>
-          </div>
-          <div class="form-group">
-           <div class="col-xs-12">
-            <br>
-            <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-          </div>
-        </div>
-      </form>
-
-      <hr>
-
-    </div><!--/tab-pane-->
-    <div class="tab-pane" id="messages">
-
-     <h2></h2>
-
-     <hr>
-     <form class="form" action="##" method="post" id="registrationForm">
-      <div class="form-group">
-
-        <div class="col-xs-6">
-          <label for="first_name"><h4>First name</h4></label>
-          <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-        </div>
-      </div>
-      <div class="form-group">
-
-        <div class="col-xs-6">
-          <label for="last_name"><h4>Last name</h4></label>
-          <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
         </div>
       </div>
 
-      <div class="form-group">
 
-        <div class="col-xs-6">
-          <label for="phone"><h4>Phone</h4></label>
-          <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="col-xs-6">
-         <label for="mobile"><h4>Mobile</h4></label>
-         <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-       </div>
-     </div>
-     <div class="form-group">
 
-      <div class="col-xs-6">
-        <label for="email"><h4>Email</h4></label>
-        <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-      </div>
-    </div>
-    <div class="form-group">
 
-      <div class="col-xs-6">
-        <label for="email"><h4>Location</h4></label>
-        <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-      </div>
-    </div>
-    <div class="form-group">
 
-      <div class="col-xs-6">
-        <label for="password"><h4>Password</h4></label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-      </div>
-    </div>
-    <div class="form-group">
-
-      <div class="col-xs-6">
-        <label for="password2"><h4>Verify</h4></label>
-        <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-      </div>
-    </div>
-    <div class="form-group">
-     <div class="col-xs-12">
-      <br>
-      <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-    </div>
-  </div>
-</form>
-</div><!--/tab-content-->
-</div><!--/col-9-->
-</div><!--/row-->
-</body>
-
-</head>
-</html>
+    </body>
+    </html>
