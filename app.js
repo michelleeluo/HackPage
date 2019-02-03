@@ -8,9 +8,9 @@
     storageBucket: "ellehacks.appspot.com",
     messagingSenderId: "506229378891",
 
-    clientId: "506229378891-s5aq2ikrpa1718jc3tuvociv513j63o6.apps.googleusercontent.com",
-    scopes: [
-        "email"]
+   //  clientId: "506229378891-s5aq2ikrpa1718jc3tuvociv513j63o6.apps.googleusercontent.com",
+   //  scopes: [
+   //      "email"]
 };
 firebase.initializeApp(config);
 db = firebase.database();
@@ -19,9 +19,9 @@ db = firebase.database();
 //     window.user = user; // user is undefined if no user signed in
 //    });
 
-function login() {
+// function login() {
     
-}
+// }
 
    // This function will trigger when there is a login event
 // firebase.auth().onAuthStateChanged(function(user) {
@@ -53,49 +53,49 @@ function login() {
 //     }
 //   })
 
-  var provider = new firebase.auth.GoogleAuthProvider();
+//   var provider = new firebase.auth.GoogleAuthProvider();
 
-  function googleSignin() {
-     firebase.auth()
+//   function googleSignin() {
+//      firebase.auth()
      
-     .signInWithPopup(provider).then(function(result) {
-        var token = result.credential.accessToken;
-        var user = result.user;
+//      .signInWithPopup(provider).then(function(result) {
+//         var token = result.credential.accessToken;
+//         var user = result.user;
           
-        console.log(token)
-        console.log(user)
-     }).catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+//         console.log(token)
+//         console.log(user)
+//      }).catch(function(error) {
+//         var errorCode = error.code;
+//         var errorMessage = error.message;
           
-        console.log(error.code)
-        console.log(error.message)
-     });
-  }
+//         console.log(error.code)
+//         console.log(error.message)
+//      });
+//   }
   
-  function googleSignout() {
-     firebase.auth().signOut()
+//   function googleSignout() {
+//      firebase.auth().signOut()
       
-     .then(function() {
-        console.log('Signout Succesful')
-     }, function(error) {
-        console.log('Signout Failed')  
-     });
-  }
+//      .then(function() {
+//         console.log('Signout Succesful')
+//      }, function(error) {
+//         console.log('Signout Failed')  
+//      });
+//   }
 
 
 
-var provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({
-    'login_hint': 'user@example.com'
-  });
+// var provider = new firebase.auth.GoogleAuthProvider();
+// provider.setCustomParameters({
+//     'login_hint': 'user@example.com'
+//   });
 
 var usersRef = firebase.database().ref("users/");
 var hacksRef = firebase.database().ref("hacks/");
 
-usersRef.orderByChild("name").on("child_added", function(data) {
-    console.log(data.val().name);
- });
+// usersRef.orderByChild("name").on("child_added", function(data) {
+//     console.log(data.val().name);
+//  });
 
 // const preObj = document.getElementById('obj');
 // const dbRefObj = firebase.database().ref().child('obj');
@@ -124,7 +124,7 @@ usersRef.orderByChild("name").on("child_added", function(data) {
 
 //////////////////////////////////////////////////////////////////
 //var tblUsers = document.getElementById('tbl_users_list');
-  var databaseRef = firebase.database().ref('users/');
+ // var databaseRef = firebase.database().ref('users/');
    
   function saveUser(){
    var age = document.getElementById('birthDate').value;
@@ -156,7 +156,7 @@ usersRef.orderByChild("name").on("child_added", function(data) {
    firebase.database().ref().update(updates);
    
    alert('The user is created successfully!');
-   reload_page();
+   //reload_page();
   }
 
   function saveHack(){
@@ -169,7 +169,7 @@ usersRef.orderByChild("name").on("child_added", function(data) {
         var cap = document.getElementById('capacity').value;
         var spons = document.getElementById('sponsors').value;
    
-    var uid = firebase.database().ref().child('users').push().key;
+    var uid = firebase.database().ref().child('hacks').push().key;
     
     var data = {
             name: nam,
@@ -187,5 +187,5 @@ usersRef.orderByChild("name").on("child_added", function(data) {
     firebase.database().ref().update(updates);
     
     alert('The hack is created successfully!');
-    reload_page();
+    //reload_page();
    }
