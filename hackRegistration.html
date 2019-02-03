@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Hack Page</title>
     <meta charset="utf-8">
@@ -9,7 +10,34 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+
 </head>
+
+<script type="text/javascript">
+    function add() { 
+        db.collection("Organization").doc().set({
+        name: hackForm.name.value,
+        school: hackForm.school.value,
+        location: hackForm.location.value,
+        startDate: hackForm.startDate,
+        endDate: hackForm.endDate,
+        sponsors: hackForm.sponsors.value,
+        email: hackForm.email.value,
+        capacity: hackForm.capacity.value
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+    }
+</script>
+
+
+
 <body>
     <nav class="navbar navbar-inverse">
         <a href="#" class="navbar-left"><img class="logo" src="logo.png" width="200" height="50"></a>
@@ -28,88 +56,108 @@
                     <li><a href="hackathonPage.html">Hackathons</a></li>
                     <li><a href="account.html">Account</a></li>
                     <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-            <ul id="login-dp" class="dropdown-menu">
-                <li>
-                     <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail2"
+                                                placeholder="Email address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2"
+                                                placeholder="Password" required>
+                                            <div style="color:black" class="help-block text-center"><a href="" style="color:black">Forget
+                                                    your password?</a></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block" style="width:300px">Sign
+                                                in</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    <div style="color:black" class="bottom text-center">
+                                        New here? <a href="registration.html" style="color:black"><b>Sign Up!</b></a>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                        <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                        <div style="color:black" class="help-block text-center"><a href="" style="color:black">Forget your password?</a></div>
-                                </div>
-                                <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block" style="width:300px">Sign in</button>
-                                </div>
-                                </form>
-                            </div>
-                            <div style="color:black" class="bottom text-center">
-                                New here? <a href="registration.html" style="color:black"><b>Sign Up!</b></a>
-                            </div>
-                     </div>
-                </li>
-            </ul>
-        </li>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-             <div class="container text-center">
-            <form class="form-horizontal" role="form">
+    <div class="container text-center">
+        <form id="hackRegForm" class="form-horizontal" role="form">
             <h2>Hackathon Registration</h2>
             <br>
+            <input type="text" id="school" placeholder="Email" class="form-control" autofocus>
+            <input type="text" id="location" placeholder="Event Name" class="form-control" autofocus>
+            <input type="date" id="startDate" placeholder="Email" class="form-control" autofocus>
+            <input type="date" id="endDate" placeholder="Event Name" class="form-control" autofocus>
+            <input type="text" id="sponsors" placeholder="Email" class="form-control" autofocus>
+            <input type="text" id="email" placeholder="Event Name" class="form-control" autofocus>
+            <input type="text" id="capacity" placeholder="Event Name" class="form-control" autofocus>
+
+            <!--
             <div class="form-group">
                 <label for="eventEmail" class="col-sm-3 control-label">Email</label>
                 <div class="col-sm-6">
-                    <input type="email" id="eventEmail" placeholder="Email" class="form-control" autofocus>
+                    <input type="email" id="email" placeholder="Email" class="form-control" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="eventName" class="col-sm-3 control-label">Event Name</label>
                 <div class="col-sm-6">
-                    <input type="text" id="eventName" placeholder="Event Name" class="form-control" autofocus>
+                    <input type="text" id="name" placeholder="Event Name" class="form-control" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Location" class="col-sm-3 control-label">Location</label>
                 <div class="col-sm-6">
-                    <input type="text" id="Location" placeholder="Location" class="form-control" autofocus>
+                    <input type="text" id="location" placeholder="Location" class="form-control" autofocus>
                 </div>
-            </div>   
+            </div>
             <div class="form-group">
-                    <label for="eventDate" class="col-sm-3 control-label">Event Date </label>
-                    <div class="col-sm-6">
-                        <input type="date" id="eventDate" placeholder="eventDate" class="form-control" name= "email">
-                    </div>
+                <label for="startDate" class="col-sm-3 control-label">Start Date </label>
+                <div class="col-sm-6">
+                    <input type="date" id="startDate" placeholder="startDate" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="school" class="col-sm-3 control-label">Associated School</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="school" placeholder="Associated School" class="form-control">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="endDate" class="col-sm-3 control-label">End Date </label>
+                <div class="col-sm-6">
+                    <input type="date" id="endDate" placeholder="endDate" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="capacity" class="col-sm-3 control-label">Maximum Capacity</label>
-                    <div class="col-sm-6">
-                        <input type="number" id="capacity" placeholder="Maximum capacity" class="form-control">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="school" class="col-sm-3 control-label">Associated School</label>
+                <div class="col-sm-6">
+                    <input type="text" id="school" placeholder="Associated School" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="sponsors" class="col-sm-3 control-label">Sponsors</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="Sponsors" placeholder="Sponsors" class="form-control">
-                        <span class="help-block">Please separate your sponsors by a comma ','.</span>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label for="capacity" class="col-sm-3 control-label">Maximum Capacity</label>
+                <div class="col-sm-6">
+                    <input type="text" id="capacity" placeholder="Maximum capacity" class="form-control">
                 </div>
-                <a href="confirmation.html" button type="submit" class="btn btn-primary btn-block">Register</button></a>
-            </form>
+            </div>
+            <div class="form-group">
+                <label for="sponsors" class="col-sm-3 control-label">Sponsors</label>
+                <div class="col-sm-6">
+                    <input type="text" id="Sponsors" placeholder="Sponsors" class="form-control">
+                    <span class="help-block">Please separate your sponsors by a comma ','.</span>
+                </div>
+            </div> --> 
+            <!--confirmation.html-->
+ 
+            <a href="" onclick="add()" value="Call function" button type="submit" class="btn btn-primary btn-block">Register</button></a>
+        </form>
 
-        </div>
-
-
+    </div>
 </body>
+</html>

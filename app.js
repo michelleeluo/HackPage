@@ -1,6 +1,7 @@
 
 var hacks = [];
 var usrs = [];
+const hackForm = document.querySelector("#hackRegForm");
 
 function renderUsers(doc){
     var curr = [7];
@@ -29,7 +30,7 @@ function renderUsers(doc){
 }
 
 function renderOrg(doc){
-    var curr = [6];
+    var curr = [7];
     let li = document.createElement('li');
      li.innerHTML = `
         <p>${ doc.data().name }</p>
@@ -37,7 +38,9 @@ function renderOrg(doc){
         <p>${ doc.data().location }</p>
         <p>${ doc.data().startDate }</p>
         <p>${ doc.data().endDate }</p>
-        <p>${ doc.data().sponsors }</p>` 
+        <p>${ doc.data().sponsors }</p>
+        <p>${ doc.data().email }</p>
+        <p>${ doc.data().capacity }</p>` 
     document.getElementById("dbstuff").innerText = li.innerText;
 
     curr[0] = doc.data().name;
@@ -46,11 +49,11 @@ function renderOrg(doc){
     curr[3] = doc.data().startDate;
     curr[4] = doc.data().endDate;
     curr[5] = doc.data().sponsors;
+    curr[6] = doc.data().email;
+    curr[7] = doc.data().caapacity;
 
     hacks.push(curr);
     console.log(hacks);
-
-
 }
 
 // getting data
@@ -64,4 +67,55 @@ function renderOrg(doc){
      snapshot.docs.forEach(doc => {
          renderUsers(doc);
      });
+ });
+
+function store() {
+    //var inp = (document.getElementById("sponsors").value).split(',');
+    // Add a new document with a generated id.
+    db.collection("Organization").doc().set({
+        name: hackForm.name.value,
+        school: hackForm.school.value,
+        location: hackForm.location.value,
+        startDate: hackForm.startDate,
+        endDate: hackForm.endDate,
+        sponsors: hackForm.sponsors.value,
+        email: hackForm.email.value,
+        capacity: hackForm.capacity.value
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+    }
+
+
+
+
+ //saving
+ hackForm.addEventListener('submit', (e) => {
+    console.log("asdfsafsf");
+    e.preventDefault();
+    //var spons = hackForm.sponsors.value.split(',');
+    console.log(spons);
+    // Add a new document with a generated id.
+    db.collection("Organization").add({
+        name: hackForm.name.value,
+        school: hackForm.school.value,
+        location: hackForm.location.value,
+        startDate: hackForm.startDate,
+        endDate: hackForm.endDate,
+        sponsors: hackForm.sponsors.value,
+        email: hackForm.email.value,
+        capacity: hackForm.capacity.value
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+    hackForm.reset();
+
  });
