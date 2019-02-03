@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
     <title>Hack Page</title>
     <meta charset="utf-8">
@@ -10,32 +9,11 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
-
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script src="app.js"></script> 
 </head>
-
-<script type="text/javascript">
-    function add() { 
-        db.collection("Organization").doc().set({
-        name: hackForm.name.value,
-        school: hackForm.school.value,
-        location: hackForm.location.value,
-        startDate: hackForm.startDate,
-        endDate: hackForm.endDate,
-        sponsors: hackForm.sponsors.value,
-        email: hackForm.email.value,
-        capacity: hackForm.capacity.value
-    })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-    }
-</script>
-
 
 
 <body>
@@ -90,24 +68,15 @@
             </div>
         </div>
     </nav>
-
     <div class="container text-center">
         <form id="hackRegForm" class="form-horizontal" role="form">
             <h2>Hackathon Registration</h2>
             <br>
-            <input type="text" id="school" placeholder="Email" class="form-control" autofocus>
-            <input type="text" id="location" placeholder="Event Name" class="form-control" autofocus>
-            <input type="date" id="startDate" placeholder="Email" class="form-control" autofocus>
-            <input type="date" id="endDate" placeholder="Event Name" class="form-control" autofocus>
-            <input type="text" id="sponsors" placeholder="Email" class="form-control" autofocus>
-            <input type="text" id="email" placeholder="Event Name" class="form-control" autofocus>
-            <input type="text" id="capacity" placeholder="Event Name" class="form-control" autofocus>
-
-            <!--
+            
             <div class="form-group">
                 <label for="eventEmail" class="col-sm-3 control-label">Email</label>
                 <div class="col-sm-6">
-                    <input type="email" id="email" placeholder="Email" class="form-control" autofocus>
+                    <input type="text" id="email" placeholder="Email" class="form-control" autofocus>
                 </div>
             </div>
             <div class="form-group">
@@ -125,13 +94,13 @@
             <div class="form-group">
                 <label for="startDate" class="col-sm-3 control-label">Start Date </label>
                 <div class="col-sm-6">
-                    <input type="date" id="startDate" placeholder="startDate" class="form-control">
+                    <input type="text" id="startDate" placeholder="startDate" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <label for="endDate" class="col-sm-3 control-label">End Date </label>
                 <div class="col-sm-6">
-                    <input type="date" id="endDate" placeholder="endDate" class="form-control">
+                    <input type="text" id="endDate" placeholder="endDate" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -149,15 +118,17 @@
             <div class="form-group">
                 <label for="sponsors" class="col-sm-3 control-label">Sponsors</label>
                 <div class="col-sm-6">
-                    <input type="text" id="Sponsors" placeholder="Sponsors" class="form-control">
+                    <input type="text" id="sponsors" placeholder="Sponsors" class="form-control">
                     <span class="help-block">Please separate your sponsors by a comma ','.</span>
                 </div>
-            </div> --> 
-            <!--confirmation.html-->
- 
-            <a href="" onclick="add()" value="Call function" button type="submit" class="btn btn-primary btn-block">Register</button></a>
+            </div>
+            <!--'email', 'name', 'location', 'startDate', 'endDate', 'school', 'capacity', 'sponsors'-->
+            
+            <a href="confirmation.html"><button onclick="regHack()"
+                id="btnSubmit" value="Call function" button type="submit" class="btn btn-primary btn-block">Register</button></a>
         </form>
 
     </div>
 </body>
-</html>
+
+
