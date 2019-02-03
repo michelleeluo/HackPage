@@ -34,7 +34,7 @@
     text-transform: uppercase;
 }
 .btn {
-    font-size: 10px;
+    font-size: 12px;
     color: #fFF;
     padding: 12px 22px;
     background: rgb(53, 53, 53);
@@ -81,4 +81,59 @@ h1 {
     h2 {
         font-size: 1.7em;
     }
+}
+
+.about-container {
+  position: relative;
+}
+
+.text-block {
+  position: absolute;
+  top: 20px;
+  right: 200px;
+  color: white;
+  padding-left: 700px;
+  padding-right: 20px;
+}
+
+body {
+    background-color:rgb(40, 40, 40) !important;
+    color: white;
+}
+
+img {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.row {margin: 0 -5px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #2E2E2E;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
