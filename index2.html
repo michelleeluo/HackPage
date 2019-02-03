@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+
+</head>
+
+<body>
+  <table>
+  <tr>
+   <td>Id: </td>
+   <td><input type="text" name="id" id="user_id" /></td>
+  </tr>
+  <tr>
+   <td>User Name: </td>
+   <td><input type="text" name="user_name" id="user_name" /></td>
+  </tr>
+  <tr>
+   <td colspan="2">
+    <input type="button" value="Save" onclick="save_user();" />
+    <input type="button" value="Update" onclick="update_user();" />
+    <input type="button" value="Delete" onclick="delete_user();" />
+   </td>
+  </tr>
+ </table>
+ 
+ <h3>Users List</h3>
+ 
+ <table id="tbl_users_list" border="1">
+  <tr>
+   <td>#ID</td>
+   <td>NAME</td>
+  </tr>
+ </table>
+
+ <script src="app.js"></script>
+</body>
+</html>
+
