@@ -44,22 +44,6 @@ db = firebase.database();
 //////////////////////////////////////////////////////////////////
 //var tblUsers = document.getElementById('tbl_users_list');
   var databaseRef = firebase.database().ref('users/');
-  //var rowIndex = 1;
-  
-//   databaseRef.once('value', function(snapshot) {
-//     snapshot.forEach(function(childSnapshot) {
-//    var childKey = childSnapshot.key;
-//    var childData = childSnapshot.val();
-   
-//    var row = tblUsers.insertRow(rowIndex);
-//    var cellId = row.insertCell(0);
-//    var cellName = row.insertCell(1);
-//    cellId.appendChild(document.createTextNode(childKey));
-//    cellName.appendChild(document.createTextNode(childData.user_name));
-   
-//    rowIndex = rowIndex + 1;
-//     });
-//   });
    
   function saveUser(){
    var age = document.getElementById('birthDate').value;
@@ -93,23 +77,7 @@ db = firebase.database();
    alert('The user is created successfully!');
    reload_page();
   }
-
-
-//         var spons = document.getElementById('sponsors').value;//.split(',');
-//         //console.log(spons);
-//         var nam = document.getElementById('name').value;
-//         var sch = document.getElementById('school').value;
-//         var ema = document.getElementById('email').value;
-//         var loc = document.getElementById('location').value;
-//         var std = document.getElementById('startDate').value;
-//         var end = document.getElementById('endDate').value;
-//         var cap = document.getElementById('capacity').value;
-//         db.collection("Organization").add({
-
-//         });
-
-
-
+  
   function saveHack(){
         var nam = document.getElementById('name').value;
         var sch = document.getElementById('school').value;
