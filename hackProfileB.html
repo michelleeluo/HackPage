@@ -1,56 +1,77 @@
 <!doctype html>
 <html>
 <head>
-    <title>UofT Hacks VI</title>
+    <title>Hack Page</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=devicewidth, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <script src="app.js"></script> 
+
 </head>
+
 <body>
     <nav class="navbar navbar-inverse">
-        <a href="#" class="navbar-left"><img class="logo" src="logo.png" width="200" height="50"></a>
+        <a href="index.html" class="navbar-left"><img class="logo" src="logo.png" width="200" height="50"></a>
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#"><img src=""></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavBar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="hackathonPage.html">Hackathons</a></li>
                     <li><a href="account.html">Account</a></li>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-                      <ul id="login-dp" class="dropdown-menu">
-                        <li>
-                           <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <form autocomplete="off">
+                                                <input type="email" class="form-control" id="exampleInputEmail2"
+                                                placeholder="Email address" required>
+                                            </form>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                            <form autocomplete="off">
+                                                <input type="password" class="form-control" id="exampleInputPassword2"
+                                                placeholder="Password" required>
+                                            </form>
+                                            <div style="color:black" class="help-block text-center"><a href="" style="color:black">Forget
+                                            your password?</a></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block" style="width:300px">Sign
+                                            in</button>
+                                        </div>
+                                    <div style="color:black" class="form-group">
+                                        New here? <a href="registration.html" style="color:black"><b>Sign Up!</b></a>
+                                    </div>
+                                    </div>
                                 </div>
-                                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                <div style="color:black" class="help-block text-center"><a href="" style="color:black">Forget your password?</a></div>
-                                <button type="submit" class="btn btn-primary btn-block" style="width:300px">Sign in</button>
-                            </form>
-                        </div>
-                        <div style="color:black" class="bottom text-center">
-                            New here? <a href="registration.html" style="color:black"><b>Sign Up!</b></a>
-                        </div>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-            </li>
-        </ul>
-    </div>
-</nav>
+            </div>
+        </div>
+    </nav>
 <br>
 <div class="container">
     <div class="row">
